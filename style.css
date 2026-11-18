@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #0b1110;
+    color: white;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #101a17;
+    border-bottom: 1px solid #263b32;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #b7ff38;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #b7ff38;
+}
+
+
+.btn-book {
+    display: inline-block;
+    background: #b7ff38;
+    color: #101a17;
+    padding: 13px 23px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 13px;
+    transition: .3s;
+}
+
+.btn-book:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+
+.hero {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    background:
+        linear-gradient(90deg,
+        rgba(5,15,12,.95),
+        rgba(5,15,12,.35)),
+        url('images/lapangan.jpg') center/cover;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #b7ff38;
+}
+
+.hero p {
+    color: #ddd;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+
+.lapangan {
+    padding: 80px 8%;
+    text-align: center;
+}
+
+.lapangan h2 {
+    font-size: 32px;
+    font-weight: 900;
+    color: #b7ff38;
+}
+
+.subtitle {
+    color: #aaa;
+    margin: 15px 0 45px;
+}
+
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.card {
+    background: #16231e;
+    border: 1px solid #293b32;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #b7ff38;
+    box-shadow: 0 12px 30px #0008;
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 23px;
+}
+
+.card-content h3 {
+    color: #b7ff38;
+    font-size: 21px;
+    margin-bottom: 18px;
+}
+
+.card-content p {
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.card-content h4 {
+    color: white;
+    font-size: 20px;
+    margin: 18px 0;
+}
+
+
+.kontak {
+    text-align: center;
+    padding: 75px 20px;
+    background: #14221c;
+}
+
+.kontak h2 {
+    color: #b7ff38;
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.kontak p {
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.btn-wa {
+    display: inline-block;
+    background: #25d366;
+    color: white;
+    padding: 16px 30px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: .3s;
+}
+
+.btn-wa:hover {
+    background: #1da851;
+    transform: translateY(-3px);
+}
+
+
+footer {
+    background: #080e0c;
+    text-align: center;
+    padding: 25px;
+    color: #888;
+    font-size: 13px;
+}
+
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 450px;
+    }
+
+    .lapangan {
+        padding: 55px 5%;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
