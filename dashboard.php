@@ -17,7 +17,8 @@ $query = mysqli_query($conn, "SELECT * FROM lapangan");
         <nav>
             <a href="dashboard.php">Home</a>
             <a href="#lapangan">Lapangan</a>
-            <a href="#kontak">Kontak</a>
+            <a href="riwayat_booking.php">Riwayat Booking</a>
+            <a href="logout.php" style="color: #ff4d4d;">Logout</a>
         </nav>
         <a href="#lapangan" class="btn-book">Booking sekarang!</a>
     </header>
