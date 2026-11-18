@@ -1,8 +1,6 @@
 <?php
 session_start();
 $pesan = "";
-
-// Login sederhana admin (Username: admin, Password: admin123)
 if (isset($_POST['login_admin'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];

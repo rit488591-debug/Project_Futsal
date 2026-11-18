@@ -2,13 +2,11 @@
 session_start();
 require_once 'koneksi.php';
 
-// Cek apakah admin sudah login
 if (!isset($_SESSION['admin_login'])) {
     header("Location: admin_login.php");
     exit;
 }
 
-// Hapus data booking jika tombol hapus diklik
 if (isset($_GET['hapus'])) {
     $id_booking = intval($_GET['hapus']);
     mysqli_query($conn, "DELETE FROM booking WHERE id_booking = $id_booking");
@@ -16,7 +14,6 @@ if (isset($_GET['hapus'])) {
     exit;
 }
 
-// Ambil semua data booking dari database beserta nama lapangannya
 $query = mysqli_query($conn, "SELECT booking.*, lapangan.nama_lapangan, lapangan.jenis_lapangan 
                               FROM booking 
                               JOIN lapangan ON booking.id_lapangan = lapangan.id 
@@ -74,10 +71,8 @@ $query = mysqli_query($conn, "SELECT booking.*, lapangan.nama_lapangan, lapangan
                 if (mysqli_num_rows($query) > 0) {
                     $no = 1;
                     while ($row = mysqli_fetch_assoc($query)) {
-                        // Gabungkan tanggal dan jam main untuk target timer JavaScript
                         $target_datetime = $row['tanggal_main'] . ' ' . $row['jam_mulai'];
 
-                        // Menghitung jam selesai berdasarkan jam mulai + durasi jam
                         $jam_mulai = date('H:i', strtotime($row['jam_mulai']));
                         $jam_selesai = date('H:i', strtotime($row['jam_mulai'] . ' + ' . $row['durasi_jam'] . ' hours'));
                 ?>
@@ -91,7 +86,6 @@ $query = mysqli_query($conn, "SELECT booking.*, lapangan.nama_lapangan, lapangan
                         <small>(<?php echo $row['durasi_jam']; ?> Jam)</small>
                     </td>
                     <td>
-                        <!-- Elemen Timer Countdown -->
                         <span class="timer-badge" id="timer-<?php echo $row['id_booking']; ?>" data-time="<?php echo $target_datetime; ?>">
                             Menghitung...
                         </span>
@@ -111,7 +105,6 @@ $query = mysqli_query($conn, "SELECT booking.*, lapangan.nama_lapangan, lapangan
         </table>
     </div>
 
-    <!-- Skrip JavaScript untuk menjalankan Timer secara Real-time -->
     <script>
         function updateTimers() {
             const timers = document.querySelectorAll('.timer-badge');
@@ -141,7 +134,6 @@ $query = mysqli_query($conn, "SELECT booking.*, lapangan.nama_lapangan, lapangan
             });
         }
 
-        // Jalankan setiap 1 detik
         setInterval(updateTimers, 1000);
         updateTimers();
     </script>

@@ -8,7 +8,6 @@ if (!isset($_SESSION['login'])) {
 }
 
 $id_user = $_SESSION['id_user'];
-// Ambil data booking berdasarkan user yang sedang login
 $query = mysqli_query($conn, "SELECT booking.*, lapangan.nama_lapangan, lapangan.jenis_lapangan 
                               FROM booking 
                               JOIN lapangan ON booking.id_lapangan = lapangan.id 
@@ -60,7 +59,6 @@ $query = mysqli_query($conn, "SELECT booking.*, lapangan.nama_lapangan, lapangan
                 if (mysqli_num_rows($query) > 0) {
                     $no = 1;
                     while ($row = mysqli_fetch_assoc($query)) {
-                        // Menghitung jam selesai berdasarkan jam mulai + durasi jam
                         $jam_mulai = date('H:i', strtotime($row['jam_mulai']));
                         $jam_selesai = date('H:i', strtotime($row['jam_mulai'] . ' + ' . $row['durasi_jam'] . ' hours'));
                 ?>

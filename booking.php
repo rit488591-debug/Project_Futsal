@@ -2,7 +2,6 @@
 session_start();
 require_once 'koneksi.php';
 
-// Cek apakah user sudah login
 if (!isset($_SESSION['login'])) {
     header("Location: login.php");
     exit;
@@ -27,8 +26,6 @@ if (isset($_POST['submit'])) {
     $jam = $_POST['jam_mulai'];
     $durasi = intval($_POST['durasi_jam']);
     $id_user = $_SESSION['id_user'];
-
-    // VALIDASI: Cek apakah lapangan sudah dibooking orang lain pada tanggal & jam yang sama
     $cek_jadwal = mysqli_query($conn, "SELECT * FROM booking WHERE id_lapangan = '$id_lapangan' AND tanggal_main = '$tanggal' AND jam_mulai = '$jam'");
     
     if (mysqli_num_rows($cek_jadwal) > 0) {
